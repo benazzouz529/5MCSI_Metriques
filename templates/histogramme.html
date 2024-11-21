@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histogramme des températures - Tawarano</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Charger le package Google Charts
+        google.charts.load('current', {packages: ['corechart']});
+
+        // Définir une fonction pour dessiner l'histogramme
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Créer les données de l'histogramme
+            var data = google.visualization.arrayToDataTable([
+                ['Jour', 'Température (°C)'],
+                ['Lundi', 22],
+                ['Mardi', 24],
+                ['Mercredi', 19],
+                ['Jeudi', 21],
+                ['Vendredi', 23],
+                ['Samedi', 26],
+                ['Dimanche', 25]
+            ]);
+
+            // Définir les options de l'histogramme
+            var options = {
+                title: 'Évolution des températures à Tawarano',
+                legend: { position: 'none' },
+                hAxis: { title: 'Jour de la semaine' },
+                vAxis: { title: 'Température (°C)' }
+            };
+
+            // Dessiner l'histogramme
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h1>Histogramme des températures</h1>
+    <div id="chart_div" style="width: 800px; height: 600px;"></div>
+</body>
+</html>
